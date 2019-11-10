@@ -4,6 +4,9 @@ class Node(object):
         self.value = value
         self.next = None
 
+    def __str__(self):
+        return str(self.value)
+
 
 class LinkedList(object):
     def __init__(self):
@@ -46,7 +49,7 @@ class LinkedList(object):
             idx = 0
             n = self.head
             n_prev = None
-            while(n):
+            while n:
                 if idx == position:
                     node.next = n
                     n_prev.next = node
@@ -65,7 +68,7 @@ class LinkedList(object):
         else:
             idx = 0
             node = self.head
-            while(node):
+            while node:
                 if idx < position:
                     node = node.next
                     idx += 1
@@ -74,7 +77,7 @@ class LinkedList(object):
 
     def last_node(self):
         node = self.head
-        while(node.next):
+        while node.next:
             node = node.next
         return node
 
@@ -85,38 +88,42 @@ class LinkedList(object):
         self.last_node().next = node
 
     def print(self):
-        print("[", end = '')
-        if (self.head):
+        print("[", end='')
+        if self.head:
             current_node = self.head
 
-            while(current_node):
-                print('{}'.format(current_node.value), end = '')
+            while current_node:
+                print('{}'.format(current_node.value), end='')
                 if current_node.next:
-                    print(', ', end = '')
+                    print(', ', end='')
                 current_node = current_node.next
         print("]")
 
-l = LinkedList()
-l.append_node(Node(2))
-l.append(3)
-l.append_node(Node(4))
-l.insert(1)
-l.insert(7)
-l.print()
-print(l.length())
-l.remove_duplicates()
-l.print()
-l.insert(1)
-l.append(1)
-l.append(3)
-l.print()
-l.remove_duplicates()
-l.print()
-l.insert(137, 2)
-l.print()
-print(l.get_node_with_position(2).value)
-l.insert(3, 3)
-l.remove_value(3)
-l.print()
-l.remove_value(1)
-l.print()
+
+if __name__ == '__main__':
+
+    l = LinkedList()
+    l.append_node(Node(2))
+    l.append(3)
+    l.append_node(Node(4))
+    l.insert(1)
+    l.insert(7)
+    l.print()
+    print(l.length())
+    l.remove_duplicates()
+    l.print()
+    l.insert(1)
+    l.append(1)
+    l.append(3)
+    l.print()
+    l.remove_duplicates()
+    l.print()
+    l.insert(137, 2)
+    l.print()
+    print(l.get_node_with_position(2).value)
+    l.insert(3, 3)
+    l.remove_value(3)
+    l.print()
+    l.remove_value(1)
+    l.print()
+    print(Node(13))
