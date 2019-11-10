@@ -29,7 +29,6 @@ class LinkedList(object):
                 values.add(node.next.value)
                 node = node.next
 
-
     def length(self):
         length = 0
         node = self.head
@@ -38,14 +37,40 @@ class LinkedList(object):
             length += 1
         return length
 
-    # inserts to head
     def insert_node(self, node, position=0):
         if position == 0:
             head = self.head
             self.head = node
             self.head.next = head
         else:
-            pass
+            idx = 0
+            n = self.head
+            n_prev = None
+            while(n):
+                if idx == position:
+                    node.next = n
+                    n_prev.next = node
+                    return
+                idx += 1
+                n_prev = n
+                n = n.next
+
+    def remove_value(self, value):
+        node = self.head
+        print("""To be implemented""")
+
+    def get_node_with_position(self, position):
+        if position < 0:
+            return None
+        else:
+            idx = 0
+            node = self.head
+            while(node):
+                if idx < position:
+                    node = node.next
+                    idx += 1
+                elif idx == position:
+                    return node
 
     def last_node(self):
         node = self.head
@@ -86,4 +111,12 @@ l.append(1)
 l.append(3)
 l.print()
 l.remove_duplicates()
+l.print()
+l.insert(137, 2)
+l.print()
+print(l.get_node_with_position(2).value)
+l.insert(3, 3)
+l.remove_value(3)
+l.print()
+l.remove_value(1)
 l.print()
