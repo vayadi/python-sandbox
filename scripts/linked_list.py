@@ -47,14 +47,17 @@ class LinkedList(object):
         else:
             pass
 
+    def last_node(self):
+        node = self.head
+        while(node.next):
+            node = node.next
+        return node
+
     def append_node(self, node):
         if not self.head:
             self.head = node
             return
-        current_node = self.head
-        while(current_node.next):
-            current_node = current_node.next
-        current_node.next = node
+        self.last_node().next = node
 
     def print(self):
         print("[", end = '')
